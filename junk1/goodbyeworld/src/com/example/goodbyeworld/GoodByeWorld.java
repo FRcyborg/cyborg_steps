@@ -10,6 +10,8 @@ public class GoodByeWorld {
         System.out.println("\n***********************************************************\n");
         System.out.println("This is here to test getting code from Macbook to Desktop");
         System.out.println("\n***********************************************************\n");
+        System.out.println("And for the heck of it, let's try going back again to the MacBook from this desktop");
+        System.out.println("\n***********************************************************\n");
 
     }
 }
