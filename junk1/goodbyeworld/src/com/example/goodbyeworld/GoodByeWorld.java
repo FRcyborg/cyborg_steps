@@ -8,5 +8,8 @@ public class GoodByeWorld {
         System.out.println("goodbye, goodbye, goodbye...");
         System.out.println("goodbye all you people.  \nThere's nothing you can say\nto make me change my mind. \ngoodbye");
         System.out.println("\n***********************************************************\n");
+        System.out.println("This is here to test getting code from Macbook to Desktop");
+        System.out.println("\n***********************************************************\n");
+
     }
 }
