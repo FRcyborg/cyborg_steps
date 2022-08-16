@@ -12,11 +12,8 @@ public class GoodByeWorld {
         System.out.println("\n***********************************************************\n");
         System.out.println("And for the heck of it, let's try going back again to the MacBook from this desktop");
         System.out.println("\n***********************************************************\n");
-<<<<<<< HEAD
         System.out.println("what goes up must come down");
         System.out.println("\n***********************************************************\n");
-=======
->>>>>>> 73fc320205c9631de5c8dbaf092d75baa8857b01
 
     }
 }
