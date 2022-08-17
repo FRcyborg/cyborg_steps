@@ -1,0 +1,45 @@
+Basic Components of a Java Module
+
+1. Module
+    a group of Packages
+2. Package
+    a group of Classes
+3. Class
+3.5 Constructor
+4. Inner Class
+5. Method
+6. Statement
+7. Variable
+
+'---------------------------------------------------------------
+
+A runable 'Hello World!' program must have:
+
+Class
+Main Method
+System.out.println statement
+
+
+example:
+public class HelloWorld {
+    static public void main(String[] args) {
+        System.out.println("Hello World!")
+    }
+}
+
+'--------------------------------------------------------------
+
+local variable
+instance variable                // need to study that
+static variable
+
+'--------------------------------------------------------------
+
+primitive data types  =>  boolean char int short byte long float double
+non-primitive data types  / object data type  => string, array, etc
+
+'--------------------------------------------------------------
+'--------------------------------------------------------------
+'--------------------------------------------------------------
+'--------------------------------------------------------------
+'--------------------------------------------------------------
