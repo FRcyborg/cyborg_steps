@@ -39,6 +39,16 @@ primitive data types  =>  boolean char int short byte long float double
 non-primitive data types  / object data type  => string, array, etc
 
 '--------------------------------------------------------------
+
+// This is how you deal with the main(String[] args) if you want to 
+// look at them:
+
+for ( String S : args )
+{
+      System.out.println("here is an args => " + s);
+}
+
+
 '--------------------------------------------------------------
 '--------------------------------------------------------------
 '--------------------------------------------------------------
