@@ -23,6 +23,8 @@ public class RecursionTutorial {
             // to decriment cout, which is a suprise to me.
             // maybe make it's own program and try this out
             // a few times
+            // ... while you're at it, see if count-- is a
+            // thing and if that would work here
             sayHi(count - 1);
       }
 
