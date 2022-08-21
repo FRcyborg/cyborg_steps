@@ -42,10 +42,9 @@ class charSets {
     
     private static void showRegularASCII_chars() 
     {
-        for ( int i=33; i<127; i++ )
+        for ( int i=33; i<128; i++ )
         {
-            System.out.println("[char(" + i + ") => " + (char)i + "] ");
-//            System.out.print("[char(" + i + ") => " + (char)i + "] ");
+            System.out.println("char(" + i + ") => " + (char)i);
         }
     } 
 
