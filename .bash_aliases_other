@@ -1,0 +1,65 @@
+# this is .bash_aliases - this is run by .bashrc
+
+# there are our personally added aliases:
+
+# added by jlf Sept 5, 2017
+alias up='sudo apt-get update && sudo apt-get upgrade'
+
+# added 20171203
+alias p='cd /media/jlf/2ndDiskPart1/Documents/Programming_Master_20171203/ProgrammingReference/'
+alias s='Default=$PS1; PS1="\[\033[32m\]\p_god \[\033[34m\] => \[\033[00m\]"'
+alias b='PS1=$Default'
+alias h='cd ~'
+alias html='cd /media/jlf/2ndDiskPart1/Documents/"Programming Master 20171203"/ProgrammingReference/HTML_Reference/"Online webpage making practice notes 20180121"'
+
+# added by jlf 20180223
+# consider this temporary, delete when ever
+alias hp='"/media/jlf/2ndDiskPart1/Documents/Programming Master 20171203/ProgrammingReference/Shell_Script_Reference/./open_consols_script.sh"'
+
+#temp alias - JLF 201800303
+alias hp2='cd "/media/jlf/2ndDiskPart1/Documents/Programming Master 20171203/ProgrammingReference/HTML_Reference/Online webpage making practice notes 20180121/4_eduonix_online_html_course"'
+
+alias jr='ssh gar_mint@haljrmint'
+
+#added May 4, 2018  -  JLF
+alias i='vim ~/Desktop/idea.txt'
+
+#added Nov 29, 2018  -  JLF
+alias st='~/.bin/./startStuff.sh && exit'
+
+#added Dec 2, 2018  -  JLF
+alias serv='ssh hp@centosserver'
+
+#added Feb 18, 2019  -  JLF
+alias p3='python3'
+
+#added March 14, 2019  -  JLF
+alias con='./a.out'
+
+#added May 18, 2019 as temp alias
+alias r='cd /media/jlf/2ndDiskPart1/Documents/Programming_Master_20171203/ProgrammingReference/Robot_RRRRRRRRRRRRRRRRRRRRRRRRR'
+
+#added July 16, 2019  -  JLF
+alias py='python3'
+
+#added Aug 7, 2019  -  JLF
+alias cstuff='cd /media/jlf/2ndDiskPart1/Documents/Programming_Master_20171203/ProgrammingReference/Starting_Out_With_C++_Early_Objects_Program_Lessons_From_Book' 
+
+#added Aug 20, 2019  -  JLF
+alias jj='cd ~/Documents/junk_trash_whenever'
+
+#added Jan 4, 2022  -  JLF
+# start robot virtual machine:
+alias rr='vboxmanage startvm Robot3'
+
+#added Jan 4, 2022  -  JLF
+# start charlie virtual machine:
+alias cc='vboxmanage startvm Charlie35'
+
+#added Aug 26, 2022  -  JLF
+alias 165='cd "/home/jlf/School_CSU/cyborg_steps_git/CS-165 Fall 2022"'
+alias 220='cd "/home/jlf/School_CSU/cyborg_steps_git/CS-220 Fall 2022"'
+
+alias cs='cd ~/School_CSU/cyborg_steps_git'
+
+
