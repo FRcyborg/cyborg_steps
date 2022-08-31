@@ -25,6 +25,8 @@ class Application(tk.Frame):
 
         canvas = Canvas(self)
         # Write your drawing instructions
+        canvas = Canvas(self)
+        canvas.create_rectangle(10, 75, 160, 125, outline="cyan", fill="cyan")
 
 
 
@@ -42,10 +44,9 @@ Canvas's create_rectangle() takes the following arguments:
 
 def main():
     app_frame = tk.Tk()
-    app_frame.geometry('400x250')
+    app_frame.geometry('1000x800')
     app = Application(master=app_frame)
     app.mainloop()
-
 
 if __name__ == '__main__':
     main()
