@@ -1,6 +1,8 @@
 public class HelloWorld {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        int remainder = 13%2;
+        int quotient = 13/2;
+        System.out.println("remainder => " + remainder + "  quotient => " + quotient);
     }
 }
