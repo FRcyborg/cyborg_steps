@@ -1,0 +1,98 @@
+// backup for 9:50pm
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class PhotoLineups {
+
+   // TODO: Write method to create and output all permutations of the list of names.
+   public static void printAllPermutations(ArrayList<String> permList, ArrayList<String> nameList) {
+   
+   }
+
+   public static void main(String[] args) {
+      Scanner scnr = new Scanner(System.in);
+      ArrayList<String> nameList = new ArrayList<String>();
+      ArrayList<String> permList = new ArrayList<String>();
+      
+      String name;
+      int numberOfUnits;
+      
+      // TODO: Read in a list of names; stop when -1 is read. Then call recursive method.
+      do {
+         name = scnr.next();
+         if ( !name.equals("-1" )) nameList.add(name);
+      } while ( !name.equals("-1"));
+      numberOfUnits = nameList.size();
+      System.out.println("nameList.size() " + nameList.size());
+   }
+}
+
+
+// back up for 11:01pm
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class PhotoLineups {
+
+   // TODO: Write method to create and output all permutations of the list of names.
+   public static void printAllPermutations(ArrayList<String> permList, ArrayList<String> nameList) {
+
+   }
+
+   public static void stringPermute(ArrayList<String> nameList, String str, String ans)
+   {
+      int asInt;
+
+      if (str.length() == 0) {
+         //System.out.print(ans + " ");
+         for ( int i=0; i<nameList.size(); i++)
+         {
+            // convert ans elements to ints
+            asInt = (int)ans.charAt(i) - 49;
+            System.out.print(nameList.get(asInt));
+            if ( i < nameList.size()-1 ) System.out.print(", ");
+
+         }
+         System.out.println();
+
+
+         return;
+      }
+
+      for (int i=0; i<str.length(); i++) {
+         char ch = str.charAt(i);
+         String ros = str.substring(0,i) + str.substring(i+1);
+         stringPermute(nameList, ros, ans + ch);
+      }
+   }  // end of stringPermute()
+
+
+
+
+
+   public static void main(String[] args) {
+      Scanner scnr = new Scanner(System.in);
+      ArrayList<String> nameList = new ArrayList<String>();
+      ArrayList<String> permList = new ArrayList<String>();
+      String bunchNumbers = "123456789";
+      String actualNumbers;
+      String name;
+      int numberOfUnits;
+
+      // TODO: Read in a list of names; stop when -1 is read. Then call recursive method.
+      do {
+         name = scnr.next();
+         if ( !name.equals("-1" )) nameList.add(name);
+      } while ( !name.equals("-1"));
+      numberOfUnits = nameList.size();
+      //System.out.println("nameList.size() " + nameList.size());
+      // make a string to stand in for number of words read it:
+      actualNumbers = bunchNumbers.substring(0, nameList.size());
+      //System.out.println("working string => " + actualNumbers);
+
+      stringPermute(nameList, actualNumbers, "");
+   }
+}
+
