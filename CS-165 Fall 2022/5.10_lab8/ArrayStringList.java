@@ -41,9 +41,13 @@ public class ArrayStringList {
      * then copying over the elements from the data array to this new array,
      * then when that is done, replacing the data array with the new one.
      */
-    private void resizeData(int newSize) {
 
-      System.out.println("array might be => " + data); 
+      // extra function
+      public static void printSomething() {
+            System.out.println("Hello world");
+      }
+
+    private void resizeData(int newSize) {
 
         
     }
@@ -123,7 +127,6 @@ public class ArrayStringList {
         ArrayStringList list = new ArrayStringList(2);
         ArrayList<String> referenceList = new ArrayList<>();
 
-    private void resizeData(2);
  
         list.add("alpha");
         referenceList.add("alpha");
@@ -131,6 +134,8 @@ public class ArrayStringList {
         referenceList.add("beta");
         list.add("gamma");
         referenceList.add("gamma");
+
+      printSomething();
 
         // You may ask why I didn't just use JUnit instead of these honestly
         // ugly if statements.
