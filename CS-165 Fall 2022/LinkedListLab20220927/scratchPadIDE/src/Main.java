@@ -55,7 +55,15 @@ public class Main {
        System.out.println("newNode => " + newNode.data + " " + newNode.next);
    }
    public void add(int index, Integer element) {
+       Node newNode = new Node(element);
+       Node current = head;
 
+       if ( head == null ) {
+           head = newNode;
+           tail = newNode;
+       } else {
+
+       }
    } // end of add(1,2)
 
     public void showLinkedList() {

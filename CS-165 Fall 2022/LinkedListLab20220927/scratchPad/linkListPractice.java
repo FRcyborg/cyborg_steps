@@ -24,12 +24,13 @@ public class linkListPractice {
 
     public boolean add(int item) {
        Node newNode = new Node(item);
+       Node current = head;
        if ( head == null ) {
            head = newNode;
            tail = newNode;
        } else {
-           tail.next = newNode;
-           tail = newNode;
+            head = newNode;
+            head.next = current;     
        } // end of if / else
         
        return false;
