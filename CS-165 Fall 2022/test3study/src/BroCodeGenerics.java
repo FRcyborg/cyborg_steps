@@ -32,6 +32,10 @@ public class BroCodeGenerics {
     }
 
 
+    public static int bunnyEars(int bunnies) {
+        if (bunnies == 0) return 0;
+        return 2 + bunnyEars(bunnies-1);
+    }
     public static void main(String[] args) {
 
         // sample arrays for testing:
@@ -72,6 +76,28 @@ public class BroCodeGenerics {
         System.out.print("We got this => { ");
         displayArray(stringArray);
         System.out.print("}\n");
+
+        // random array practice:
+        int[] a1 = {4, 5, 2, 12, 14, 14, 9};
+        System.out.println();
+        System.out.print("array => ");
+        for ( int i : a1 ) System.out.print(i + " " );
+        System.out.println();
+
+        System.out.println();
+
+//        ArrayList<Object> list = new ArrayList<>(20);
+
+        ArrayList<String> list = new ArrayList<>(10);
+        list.add("Ann");
+        list.add("Bob");
+        list.add("Eve");
+        System.out.println(list.size());
+        // apparently there is no way to get capacity after the fact
+//        System.out.println(list.capacity());
+
+        System.out.println("bunny ears of x bunnies => " + bunnyEars(5));
+
 
 // --------------------------------------------------------------------------------
 /*
