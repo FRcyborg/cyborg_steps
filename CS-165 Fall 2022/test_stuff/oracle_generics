@@ -1,0 +1,275 @@
+
+
+    Write a generic method to count the number of elements in a collection that have a specific property (for example, odd integers, prime numbers, palindromes).
+
+    Answer:
+
+    public final class Algorithm {
+        public static <T> int countIf(Collection<T> c, UnaryPredicate<T> p) {
+
+            int count = 0;
+            for (T elem : c)
+                if (p.test(elem))
+                    ++count;
+            return count;
+        }
+    }
+
+    where the generic UnaryPredicate interface is defined as follows:
+
+    public interface UnaryPredicate<T> {
+        public boolean test(T obj);
+    }
+
+    For example, the following program counts the number of odd integers in an integer list:
+
+    import java.util.*;
+
+    class OddPredicate implements UnaryPredicate<Integer> {
+        public boolean test(Integer i) { return i % 2 != 0; }
+    }
+
+    public class Test {
+        public static void main(String[] args) {
+            Collection<Integer> ci = Arrays.asList(1, 2, 3, 4);
+            int count = Algorithm.countIf(ci, new OddPredicate());
+            System.out.println("Number of odd integers = " + count);
+        }
+    }
+
+    The program prints:
+
+    Number of odd integers = 2
+
+    Will the following class compile? If not, why?
+
+    public final class Algorithm {
+        public static <T> T max(T x, T y) {
+            return x > y ? x : y;
+        }
+    }
+
+    Answer: No. The greater than (>) operator applies only to primitive numeric types.
+
+    Write a generic method to exchange the positions of two different elements in an array.
+
+    Answer:
+
+    public final class Algorithm {
+        public static <T> void swap(T[] a, int i, int j) {
+            T temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+        }
+    }
+
+    If the compiler erases all type parameters at compile time, why should you use generics?
+
+    Answer: You should use generics because:
+        The Java compiler enforces tighter type checks on generic code at compile time.
+        Generics support programming types as parameters.
+        Generics enable you to implement generic algorithms.
+
+
+    What is the following class converted to after type erasure?
+
+    public class Pair<K, V> {
+
+        public Pair(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        public K getKey(); { return key; }
+        public V getValue(); { return value; }
+
+        public void setKey(K key)     { this.key = key; }
+        public void setValue(V value) { this.value = value; }
+
+        private K key;
+        private V value;
+    }
+
+    Answer:
+
+    public class Pair {
+
+        public Pair(Object key, Object value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        public Object getKey()   { return key; }
+        public Object getValue() { return value; }
+
+        public void setKey(Object key)     { this.key = key; }
+        public void setValue(Object value) { this.value = value; }
+
+        private Object key;
+        private Object value;
+    }
+
+    What is the following method converted to after type erasure?
+
+    public static <T extends Comparable<T>>
+        int findFirstGreaterThan(T[] at, T elem) {
+        // ...
+    }
+
+    Answer:
+
+    public static int findFirstGreaterThan(Comparable[] at, Comparable elem) {
+        // ...
+        }
+
+    Will the following method compile? If not, why?
+
+    public static void print(List<? extends Number> list) {
+        for (Number n : list)
+            System.out.print(n + " ");
+        System.out.println();
+    }
+
+    Answer: Yes.
+
+    Write a generic method to find the maximal element in the range [begin, end) of a list.
+
+    Answer:
+
+    import java.util.*;
+
+    public final class Algorithm {
+        public static <T extends Object & Comparable<? super T>>
+            T max(List<? extends T> list, int begin, int end) {
+
+            T maxElem = list.get(begin);
+
+            for (++begin; begin < end; ++begin)
+                if (maxElem.compareTo(list.get(begin)) < 0)
+                    maxElem = list.get(begin);
+            return maxElem;
+        }
+    }
+
+    Will the following class compile? If not, why?
+
+    public class Singleton<T> {
+
+        public static T getInstance() {
+            if (instance == null)
+                instance = new Singleton<T>();
+
+            return instance;
+        }
+
+        private static T instance = null;
+    }
+
+    Answer: No. You cannot create a static field of the type parameter T.
+
+    Given the following classes:
+
+    class Shape { /* ... */ }
+    class Circle extends Shape { /* ... */ }
+    class Rectangle extends Shape { /* ... */ }
+
+    class Node<T> { /* ... */ }
+
+    Will the following code compile? If not, why?
+
+    Node<Circle> nc = new Node<>();
+    Node<Shape>  ns = nc;
+
+    Answer: No. Because Node<Circle> is not a subtype of Node<Shape>.
+
+    Consider this class:
+
+    class Node<T> implements Comparable<T> {
+        public int compareTo(T obj) { /* ... */ }
+        // ...
+    }
+
+    Will the following code compile? If not, why?
+
+    Node<String> node = new Node<>();
+    Comparable<String> comp = node;
+
+    Answer: Yes.
+    How do you invoke the following method to find the first integer in a list that is relatively prime to a list of specified integers?
+
+    public static <T>
+        int findFirst(List<T> list, int begin, int end, UnaryPredicate<T> p)
+
+    Note that two integers a and b are relatively prime if gcd(a, b) = 1, where gcd is short for greatest common divisor.
+
+    Answer:
+
+    import java.util.*;
+
+    public final class Algorithm {
+
+        public static <T>
+            int findFirst(List<T> list, int begin, int end, UnaryPredicate<T> p) {
+
+            for (; begin < end; ++begin)
+                if (p.test(list.get(begin)))
+                    return begin;
+            return -1;
+        }
+
+        // x > 0 and y > 0
+        public static int gcd(int x, int y) {
+            for (int r; (r = x % y) != 0; x = y, y = r) { }
+                return y;
+        }
+    }
+
+    The generic UnaryPredicate interface is defined as follows:
+
+    public interface UnaryPredicate<T> {
+        public boolean test(T obj);
+    }
+
+    The following program tests the findFirst method:
+
+    import java.util.*;
+
+    class RelativelyPrimePredicate implements UnaryPredicate<Integer> {
+        public RelativelyPrimePredicate(Collection<Integer> c) {
+            this.c = c;
+        }
+
+        public boolean test(Integer x) {
+            for (Integer i : c)
+                if (Algorithm.gcd(x, i) != 1)
+                    return false;
+
+            return c.size() > 0;
+        }
+
+        private Collection<Integer> c;
+    }
+
+    public class Test {
+        public static void main(String[] args) throws Exception {
+
+            List<Integer> li = Arrays.asList(3, 4, 6, 8, 11, 15, 28, 32);
+            Collection<Integer> c = Arrays.asList(7, 18, 19, 25);
+            UnaryPredicate<Integer> p = new RelativelyPrimePredicate(c);
+
+            int i = ALgorithm.findFirst(li, 0, li.size(), p);
+
+            if (i != -1) {
+                System.out.print(li.get(i) + " is relatively prime to ");
+                for (Integer k : c)
+                    System.out.print(k + " ");
+                System.out.println();
+            }
+        }
+    }
+
+    The program prints:
+
+    11 is relatively prime to 7 18 19 25
+
+

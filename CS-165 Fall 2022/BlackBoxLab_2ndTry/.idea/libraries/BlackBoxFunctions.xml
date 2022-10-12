@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="BlackBoxFunctions">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/imported_stuff/BlackBoxFunctions.jar!/" />
+      <root url="file://$PROJECT_DIR$/src/imported_stuff/BlackBoxFunctions" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

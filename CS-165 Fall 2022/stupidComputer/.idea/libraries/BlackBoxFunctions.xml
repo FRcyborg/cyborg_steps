@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="BlackBoxFunctions">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../BlackBoxLab_2ndTry/src/imported_stuff/BlackBoxFunctions.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
