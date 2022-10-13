@@ -1,9 +1,9 @@
 import java.util.*;
 
-public class GenericStack {
+public class GenericStack<T> {
 
         //String[] nodeData;
-        ArrayList<String> nodeData = new ArrayList<>();
+        ArrayList<T> nodeData = new ArrayList<>();
         int size;
 
 
@@ -31,7 +31,7 @@ public class GenericStack {
         /* Return the object at the top of the stack, WITHOUT removing it.
          * If there are no elements to peek, throw a NoSuchElementException.
          */
-        public String peek() {
+        public T peek() {
             return nodeData.get(size-1);
             //return nodeData[size-1];
         }
@@ -39,24 +39,28 @@ public class GenericStack {
         /* Return the object at the top of the stack, AND ALSO remove it.
          * If there are no elements to pop, throw a NoSuchElementException.
          */
-        public String pop() {
+        public T pop() {
             if (size == 0) {
-                return "NoSuchElementException";
+                // this is going to be an issue with generics
+                // look up what to do about this
+                // return "NoSuchElementException";
+                return (T)"something";
+
             } else {
-                String tempString = null;
+                T tempThing = (T)"something";
                 if (size >= 0) {
-                    tempString = nodeData.get(size - 1);
+                    tempThing = nodeData.get(size - 1);
                     nodeData.remove(size - 1);
                     size--;
                 }
-                return tempString;
+                return tempThing;
             }
         }
 
         /* Add a new object to the top of the stack.
          * If there is no room in the stack, throw a IllegalStateException.
          */
-        public String push(String s) {
+        public T push(T s) {
             nodeData.add(s);
             //size = nodeData.size();
             size++;
@@ -70,7 +74,7 @@ public class GenericStack {
          * distance 0, the one below the topmost item is at distance 1, etc.
          * If the item is not found, return -1.
          */
-        public int search(String s) {
+        public int search(T s) {
             //int distance = 0;
             if ( nodeData.contains(s)) {
                 return ( nodeData.size() - nodeData.indexOf(s) - 1 );
@@ -97,7 +101,8 @@ public class GenericStack {
     // when you think the above code works.
     public static void main(String[] args) {
 
-        GenericStack ss = new GenericStack();
+        GenericStack<String> ss = new GenericStack<>();
+        GenericStack<Character> si = new GenericStack<>();
 
         ss.showArray();
 //        System.out.println("is nodeData empty? => " + ss.empty());
@@ -106,6 +111,13 @@ public class GenericStack {
         ss.push("other string");
         ss.push("somethingElse");
         ss.push("still more");
+
+        si.push('A');
+        si.push('b');
+        si.push('L');
+        si.push('i');
+
+
 
  //       System.out.println("is nodeData empty? => " + ss.empty());
         ss.showArray();
@@ -118,6 +130,7 @@ public class GenericStack {
         System.out.println("push  => " + ss.push("roger"));
        ss.showArray();
 
+       si.showArray();
 
 
     } // end of test main

@@ -1,0 +1,56 @@
+
+7.4 Lab 12 - Generic Stack
+Module 6: Lab 12 - Generic Stack
+Strings Are So Last Year
+
+This lab includes the following files:
+
+L12
+└── GenericStack.java
+└── Calculator.java*
+└── numbers.txt
+
+
+* (This is the main file in zyLabs and is read-only because you do not need to modify anything.)
+
+Here is the jar if you want to code in a different environment: L12.jar. Note: you likely will have to update the path to numbers.txt.
+
+In the last lab, we made a stack that only works with Strings. Unfortunately, plain old Strings are quite boring, and we'd like our stack to work with even more general data types. This lab will have you not only make your stack so it works with any kind of data, but also fix some existing generic code to actually work with our new stack.
+
+As with the last lab, make sure you remember that size is not capacity. Size is the number of elements the stack contains, and capacity is how many elements it can hold.
+Make It Generic!
+
+The first part of this lab is making your stack generic. Feel free to take the code from your working StringStack class - everything except the main method - and paste it into the GenericStack class. Change the name of the constructors to match the new name of the class, then modify the whole class so it uses generics, and can store any type that a programmer asks for.
+
+Until you successfully complete this, the main method will give you nasty compiler errors. Once they stop, you should be good to move on!
+Numbers and Readers
+
+To take advantage of polymorphism, Java has a lot of inheritance hierarchies built-in. You may not have known that simple numeric classes, like Integer and Float, are actually part of one! Java contains a generic number class creatively called Number, and pretty much any class in Java whose purpose is to store numbers inherits from this class. (Note that this does not include the primitive int, float, and so on, since there are not classes)
+
+Deep within Java's I/O packages, there's another interesting hierarchy of classes; the Reader and its many children. There are many types of Readers that can extract characters from different things, such as Strings, Files, and arrays.
+Scrolls of Numbers
+
+A few years back, I bought a box of random numbers from an intrepid salesman who insisted they were special. I'd like to find out if that's really the the case. Unfortunately, I've stored the numbers in a bunch of different places - some of them are in Strings, others are in files, it's a bit of a mess.
+
+So I created a generic calculator that, using Readers, can read in a list of numbers from any source, put them into a stack, and then add them all up. Since I'm a good programmer, I put each of these steps in their own functions. Take a look at each of the methods and make sure you understand how they function.
+
+makeStack is supposed to take in a Reader, of any kind, and return a stack of Numbers from the data in that Reader.
+evaluate is designed to take a stack of Numbers and add all of the numbers together, returning the result as a double.
+A note for this function: the Number class can't be directly added to a primitive (like a double, int, etc.) However, a Number object can be converted into a primitive with the use of the doubleValue() function.
+I use the parse function to help with makeStack, and you can see how the return type matches the function and how it is used in makeStack.
+
+Wrapping up
+
+You'll know when you've successfully completed this lab once you can compile and run the code without errors, and you get output that looks like this:
+
+76.4
+76.39999961853027
+4584425.0
+15.324
+
+Submission
+
+In Submit mode, select "Submit for grading" when you are ready to turn in your assignment.
+
+You are now armed with the knowledge necessary to tackle this lab. Go forth!
+422352.2723990.qx3zqy7
