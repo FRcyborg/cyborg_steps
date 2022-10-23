@@ -1,8 +1,6 @@
 import java.util.*;
 
 
-
-
 public class LinkedQueue implements MyQueue{
 
 
@@ -219,7 +217,7 @@ public class LinkedQueue implements MyQueue{
             System.exit(1);
         }catch(IllegalStateException e){}
         catch(Exception e) {
-            System.err.println("ERROR: Caught the wrong excpetion");
+            System.err.println("ERROR: Caught the wrong exception");
             System.exit(1);
         }
         System.out.println("Add Looks Good");
