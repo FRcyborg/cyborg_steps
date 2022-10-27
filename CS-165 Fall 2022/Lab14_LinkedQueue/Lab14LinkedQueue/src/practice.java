@@ -16,7 +16,6 @@ public class practice {
     }
 
     public static void newNode(String name) {
-
     }
     public static boolean check() {
         return ( head == null );
