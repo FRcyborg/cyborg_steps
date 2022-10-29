@@ -1,9 +1,18 @@
+/*
+    CS165 Lab 14 code as submitted
+    20221028  -  JLF
+#Lab #14 #Lab14 #Lab 14 #Queue #Implement #LinkedList
+*/
+
+
 import java.util.*;
+
+ 
 
 
 public class LinkedQueue implements MyQueue{
 
-
+ 
 
     public class Node {
         String name;
@@ -17,7 +26,7 @@ public class LinkedQueue implements MyQueue{
         }
     }
 
-
+ 
 
     /**
      * a reference to the head of the Queue
@@ -36,7 +45,7 @@ public class LinkedQueue implements MyQueue{
      */
     private int size;
 
-
+ 
 
     /**TODO FINISH ME
      * The Constructor should set maxCount to the maximum amount of customers for the day
@@ -44,10 +53,15 @@ public class LinkedQueue implements MyQueue{
      * @param maxCount
      */
     public LinkedQueue(int maxCount){
-        //TODO: Change this
-        this.maxCount=-1;
-
-    }
+    	//TODO: Change this
+    	//this.maxCount=-1;
+    	this.maxCount = maxCount;
+    	size = 0;
+    	tail = null;
+    	head = tail;
+      }
+      
+      
     /**TODO FINISH ME
      * This method should add a new Node with the person's name at the
      * end of the Queue. This method should also check if the Queue
@@ -57,14 +71,35 @@ public class LinkedQueue implements MyQueue{
      * @param name - person to add
      * @return true if item can be added
      * @throws IllegalStateException if the Queue is full
+     * voiding this next line per instruction:
      *                               element cannot be added because it is a duplicate
      */
     @Override
     public boolean add(String name) {
-        return false;
-    }
 
+        Node newNode = new Node(name);
+        if ( size == maxCount ) {
+            throw new IllegalStateException();
+        }
+        else {
+            //if ( !contains(name) ) {
+               if ( size == 0 ) {
+                   head = newNode;
+               } else {
+                   // add newNode to end of LinkedList:
+                   tail.next = newNode;
+               }
+                tail = newNode;
+                size+=1;
+                return true;
+            //}
+        }
+      //  return false;
+    } // end of add()
+       
+ 
 
+ 
 
     /**TODO FINISH ME
      * This method is the same as add EXCEPT that it simply returns
@@ -75,10 +110,26 @@ public class LinkedQueue implements MyQueue{
      */
     @Override
     public boolean offer(String name) {
-        return false;
-    }
-
-
+        Node newNode = new Node(name);
+        if ( size == maxCount ) {
+            return false;
+        }
+        else {
+            //if ( !contains(name) ) {
+                if ( size == 0 ) {
+                    head = newNode;
+                } else {
+                    // add newNode to end of LinkedList:
+                    tail.next = newNode;
+                }
+                tail = newNode;
+                size+=1;
+                return true;
+            //}
+        }
+        //return false;
+    }  // end of offer()
+ 
 
     /**TODO FINISH ME
      * returns the name of the element at the head of the Queue but do
@@ -89,10 +140,11 @@ public class LinkedQueue implements MyQueue{
      */
     @Override
     public String element() {
-        return null;
+       if ( size > 0 ) return head.name;
+       else throw new NoSuchElementException();
     }
 
-
+ 
 
     /**TODO FINISH ME
      * This method is the same as element except for the fact that it
@@ -102,7 +154,8 @@ public class LinkedQueue implements MyQueue{
      */
     @Override
     public String peek() {
-        return null;
+       if ( size > 0 ) return head.name;
+       else return null;
     }
 
     /**TODO FINISH ME
@@ -111,11 +164,17 @@ public class LinkedQueue implements MyQueue{
      * @return the name of element at the head of the Queue, or null if Queue is empty
      */
     @Override
-    public String poll() {
-        return null;
-    }
+    public String poll(){
+       if ( size == 0 ) return null;
+       else {
+        String tempString = head.name;
+        head = head.next;
+        size-=1;
+       return tempString;
+       }
+    } // end of poll()
 
-
+ 
 
     /**TODO FINISH ME
      * This method is the same as poll() except that it throws an exception if the Queue
@@ -126,10 +185,16 @@ public class LinkedQueue implements MyQueue{
      */
     @Override
     public String remove() {
-        return null;
+        if ( size == 0 ) throw new NoSuchElementException();
+        else {
+            String tempString = head.name;
+            head = head.next;
+            size -= 1;
+            return tempString;
+        }
     }
 
-
+ 
 
     /**TODO FINISH ME
      * Returns true if the Queue contains a node with the same name that was passed in
@@ -139,20 +204,27 @@ public class LinkedQueue implements MyQueue{
      */
     @Override
     public boolean contains(String name) {
-        return false;
+      Node tempNode = head;
+      String tempString = null;
+      for ( int i=0; i<size; i++ ) {
+         tempString = tempNode.name;
+         if ( name.equals(tempString) ) return true;
+         tempNode = tempNode.next;
+      }
+      return false;
     }
 
-
+ 
 
     /**TODO FINISH ME
      * @return The current number of items in the string
      */
     @Override
     public int size() {
-        return 0;
+        return size;
     }
-
-
+    
+    
     @Override
     public String toString(){
         String retString = "";
@@ -188,110 +260,112 @@ public class LinkedQueue implements MyQueue{
             money += priceOfCone;
             cur = queue.poll();
         }
-
+        
         return ("The Ice Cream booth made $" + money + " and served " + numCustomers + " people");
     }
-
+    
     public static void myAssert(boolean b){
-        if (!b) throw new RuntimeException();
+    	if (!b) throw new RuntimeException();
     }
-
-
-
-    // -----------------------------------------------------------------------------------------------
-    // -----------------------------------------------------------------------------------------------
-    // -----------------------------------------------------------------------------------------------
+    
+    
+    //----------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------
+    
     public static void main(String[] arg){
-
-        System.out.println("Testing Methods It will stop running the program if there is an issue and let you know\n");
-
-
-        LinkedQueue q1 = new LinkedQueue(4);
-
-        System.out.println("Testing Add:");
-        if(!q1.add("1")) {
-            System.err.println("ERROR: Add did not return True");
-            System.exit(1);
+    	
+       System.out.println("Testing Methods It will stop running the program if there is an issue and let you know\n");
+       
+       
+       LinkedQueue q1 = new LinkedQueue(4); 
+       
+       System.out.println("Testing Add:"); 
+       if(!q1.add("1")) {
+        	System.err.println("ERROR: Add did not return True");
+        	System.exit(1);
         }
         q1.add("2");
         q1.add("3");
         q1.add("4");
         myAssert(q1.toString().equals("1 2 3 4 "));
+        
+        System.out.println("lkjdsaflkjads;lkjfsa;lkjf");
         try{
-            q1.add("Darius");
-            System.err.println("ERROR: add adds Elements past max Size");
-            System.exit(1);
+        		q1.add("Darius");
+        		System.err.println("ERROR: add adds Elements past max Size");
+        		System.exit(1);
         }catch(IllegalStateException e){}
-        catch(Exception e) {
-            System.err.println("ERROR: Caught the wrong exception");
-            System.exit(1);
-        }
+         catch(Exception e) {
+    	    System.err.println("ERROR: Caught the wrong excpetion");
+   			System.exit(1);
+       }
         System.out.println("Add Looks Good");
+        
 
-
-
+        
         System.out.println("\n");
 
 
-        System.out.println("Testing Offer:");
+        System.out.println("Testing Offer:"); 
         LinkedQueue q2 = new LinkedQueue(4);
         if(!q2.offer("1")) {
-            System.err.println("ERROR: Offer did not return True");
-            System.exit(1);
+        	System.err.println("ERROR: Offer did not return True");
+        	System.exit(1);
         }
         q2.offer("2");
         q2.offer("3");
         q2.offer("4");
         myAssert(q2.toString().equals("1 2 3 4 "));
-
+        
         if(q2.offer("Darius")) {
-            System.err.println("ERROR: offer adds Elements past max Size");
-            System.exit(1);
+        		System.err.println("ERROR: offer adds Elements past max Size");
+        		System.exit(1);
         }
-
+        
         System.out.println("Offer Looks Good");
-
-
+        
+        
         System.out.println("\n");
 
-
+        
         System.out.println("Testing Element:");
-
+        
         LinkedQueue q3 = new LinkedQueue(4);
         try {
-            q3.element();
-            System.err.println("ERROR: element on an empty list did not throw an exception");
-            System.exit(1);
+        	q3.element();
+        	System.err.println("ERROR: element on an empty list did not throw an exception");
+        	System.exit(1);
         }
         catch(NoSuchElementException e) {}
         catch(Exception  e) {
-            System.err.println("ERROR: caught wrong exception");
-            System.exit(1);
+        	System.err.println("ERROR: caught wrong exception");
+        	System.exit(1);
         }
         q3.add("1");
         myAssert(q3.element().equals("1"));
         myAssert(q3.toString().equals("1 "));
         System.out.println("Element Looks good");
-
+        
         System.out.println("\n");
-
+        
         System.out.println("Testing Peek:");
-
+        
         LinkedQueue q4 = new LinkedQueue(4);
-
+     
         if(q4.peek()!= null) {
-            System.err.println("ERROR: peek on an empty list did not return null");
-            System.exit(1);
+        	System.err.println("ERROR: peek on an empty list did not return null");
+        	System.exit(1);
         }
-
+        
         q4.add("1");
         myAssert(q4.element().equals("1"));
         myAssert(q4.toString().equals("1 "));
         System.out.println("Peek Looks good");
-
+        
         System.out.println("\n");
-
-
+    
+        
         System.out.println("Testing Poll:");
         LinkedQueue q5 = new LinkedQueue(4);
         q5.offer("Joe");
@@ -305,62 +379,65 @@ public class LinkedQueue implements MyQueue{
         System.out.println("Poll Looks good");
         System.out.println("\n");
 
-
-
+        
+        
         System.out.println("Testing Remove");
         LinkedQueue q6 = new LinkedQueue(4);
         try {
-            q6.remove();
+        	q6.remove();
         }
         catch(NoSuchElementException e) {
-
+        	
         }
         catch(Exception e) {
-            System.err.println("ERROR: caught wrong exception");
-            System.exit(1);
+        	System.err.println("ERROR: caught wrong exception");
+        	System.exit(1);
         }
         q6.add("1");
         q6.add("2");
         myAssert("1".equals(q6.remove()));
         myAssert(q6.toString().equals("2 "));
         System.out.println("Remove looks good");
-
+        
         System.out.println("\n");
         LinkedQueue q7 = new LinkedQueue(4);
         q7.offer("Joe");
         //test contains
-        System.out.println("Testing Contains:");
-        myAssert(q7.contains("Joe"));
-        myAssert(!q7.contains("Jim"));
-        myAssert(!new LinkedQueue(2).contains("Bob"));
-        System.out.println("Contains Looks good");
-
+	    System.out.println("Testing Contains:");    
+	    myAssert(q7.contains("Joe"));
+	    myAssert(!q7.contains("Jim"));
+	    myAssert(!new LinkedQueue(2).contains("Bob"));
+	    System.out.println("Contains Looks good");
+	    
         //test size
-        System.out.println("\n");
-        System.out.println("Testing Size:");
-        LinkedQueue q8 =  new LinkedQueue(4);
-        myAssert(q8.size() ==0);
-        q8.add("1");
-        myAssert(q8.size() ==1);
-        q8.offer("1");
-        myAssert(q8.size() ==2);
-        q8.element();
-        myAssert(q8.size() ==2);
-        q8.peek();
-        myAssert(q8.size() ==2);
-        q8.remove();
+	    System.out.println("\n");
+	    System.out.println("Testing Size:");
+	    LinkedQueue q8 =  new LinkedQueue(4);
+	    myAssert(q8.size() ==0);
+	    q8.add("1");
+	    myAssert(q8.size() ==1);
+	    q8.offer("1");
+// added this next line to deal with since cancelled requirment
+//	    q8.offer("2");
+	    myAssert(q8.size() ==2);
+	    q8.element();
+	    myAssert(q8.size() ==2);
+	    q8.peek();
+	    myAssert(q8.size() ==2);
+	    q8.remove();
         myAssert(q8.size()==1);
         q8.poll();
         myAssert(q8.size()==0);
         q8.poll();
         myAssert(q8.size()==0);
-
+        
         System.out.println("Size Looks good");
-
-
+        
+       
 //       //UNCOMMENT WHEN YOU HAVE TESTED ALL OTHER CODE
         LinkedQueue queue = new LinkedQueue(4);
         System.out.println("\n\n\n");
         System.out.println(queue.simulateBooth());
     }
 }
+
