@@ -12,7 +12,7 @@
 
 
 
-public class Prac {
+public class OtherPrac {
 
     // linked list variables:
     private Node head;
@@ -43,6 +43,26 @@ public class Prac {
         Node tail = head;
     } // end of constructor
 
+
+      public boolean offer(String name){
+            Node newNode = new Node(name);
+            if ( size == maxCount ) return false;
+            if ( contains(name)) return false;
+            if ( tail == null ) {
+                  tail = newNode;
+                  size+=1;
+            } else {
+                  tail.next = newNode;
+                  
+            
+
+                  
+            
+
+      } // end of offer
+
+
+// swap this around to add at the back
     public Node add(String name) {
         Node tempNode = new Node(name);
 
